@@ -1,0 +1,23 @@
+{
+  "name": "mysql_tracker_of_employees",
+  "version": "1.0.0",
+  "description": "![License](https://img.shields.io/badge/License-MIT-orange)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gardnerd06/MySQL_Tracker_of_Employees.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gardnerd06/MySQL_Tracker_of_Employees/issues"
+  },
+  "homepage": "https://github.com/gardnerd06/MySQL_Tracker_of_Employees#readme",
+  "dependencies": {
+    "inquirer": "^8.2.4",
+    "mysql2": "^3.1.2"
+  }
+}
