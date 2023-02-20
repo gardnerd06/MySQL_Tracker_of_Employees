@@ -1,10 +1,10 @@
 const inquirer = require('inquirer');
-const getDept = require('./routes/dept');
+const getDept = require('./routes/update');
 const fetch = require('node-fetch');
 const cTable = require('console.table');
 // const db = require('./server');
 const mysql = require('mysql2');
-const addStuff = require('./routes/dept');
+const addStuff = require('./routes/update');
 
 const db = mysql.createConnection(
     {
@@ -35,16 +35,19 @@ function getQuest() {
                     case 'View all departments':
                         db.query('SELECT * FROM departments', function (err, results) {
                             console.table(results)
+                            getQuest();
                         });
                         return results;
                     case 'View all roles':
                         db.query('SELECT * FROM roles', function (err, results) {
                             console.table(results);
+                            getQuest();
                         });
                         return results;
                     case 'View all employees':
                         db.query('SELECT * FROM employees', function (err, results) {
                             console.table(results);
+                            getQuest();
                         });
                         return results;
                     case 'Add a department':
@@ -57,7 +60,8 @@ function getQuest() {
 
                         return;
                     case 'update an employee?':
-
+                        const update = addStuff.add();
+                        console.table(update);
                         return;
                 }
             }
