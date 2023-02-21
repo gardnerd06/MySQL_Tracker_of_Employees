@@ -2,7 +2,6 @@ const inquirer = require('inquirer');
 
 
 function add() {
-
     const addStuff = [{
         type: "list",
         name: "add",
@@ -20,7 +19,8 @@ function add() {
     },
     ];
 
-    inquirer.prompt().then((responses => db.query(`UPDATE ${responses.add} SET name = '${responses.thing} WHERE id = 1'`)))
+
+    inquirer.prompt(addStuff).then((responses => console.log(`${responses.add} + ${responses.thing}`)));
 };
 
 

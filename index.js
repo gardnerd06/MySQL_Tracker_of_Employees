@@ -1,10 +1,13 @@
 const inquirer = require('inquirer');
-const getDept = require('./routes/update');
 const fetch = require('node-fetch');
 const cTable = require('console.table');
-// const db = require('./server');
 const mysql = require('mysql2');
-const addStuff = require('./routes/update');
+const updateStuff = require('./routes/update');
+const addDept = require('./routes/depart');
+const addEmployee = require('./routes/employee');
+const addRole = require('./routes/role');
+
+
 
 const db = mysql.createConnection(
     {
@@ -29,72 +32,60 @@ function getQuest() {
                 'Add a department',
                 'add a role',
                 'add an employee',
-                'update an emplyee?'],
+                'update an employee?'],
             filter(input) {
                 switch (input) {
                     case 'View all departments':
                         db.query('SELECT * FROM departments', function (err, results) {
-                            console.table(results)
+                            console.table(results);
                             getQuest();
                         });
-                        return results;
+                        return;
                     case 'View all roles':
                         db.query('SELECT * FROM roles', function (err, results) {
                             console.table(results);
                             getQuest();
                         });
-                        return results;
+                        return;
                     case 'View all employees':
                         db.query('SELECT * FROM employees', function (err, results) {
                             console.table(results);
                             getQuest();
                         });
-                        return results;
+                        return;
                     case 'Add a department':
+                        this.async(addDept.adddept());
+
 
                         return;
                     case 'add a role':
+                        this.async(addRole.addRoles());
 
                         return;
                     case 'add an employee':
+                        this.async(addEmployee.addEmploy());
 
                         return;
                     case 'update an employee?':
-                        const update = addStuff.add();
-                        console.table(update);
+                        this.async(updateStuff.add());
                         return;
                 }
             }
-        },
-        {
-            type: "list",
-            name: "addInfo",
-            message: 'What would you like to add?',
-            choices: ['departments', 'roles', 'employees'],
-        },
-        {
-            type: "input",
-            name: "Info",
-            message: 'What info to add?',
-            validate(value) {
-                if (value !== "") return true;
-                else console.log("You must enter valid info!");
-            },
         }
     ]
     inquirer.prompt(questions)
         .then((answers) => {
-            let name = answers.Info;
-            let table = answers.addInfo;
+            // let name = answers.Info;
+            // let table = answers.addInfo;
 
-            const answer = `INSERT INTO ${table} (name) Values ('${name}')`;
-            db.query(answer, function (err, result) {
-                if (err) throw err;
+            // const answer = `INSERT INTO ${table} (name) Values ('${name}')`;
+            // db.query(answer, function (err, result) {
+            //     if (err) throw err;
 
-                db.query(`SELECT * FROM ${table}`, function (err, res) {
-                    console.table(res);
-                });
-            })
+            //     db.query(`SELECT * FROM ${table}`, function (err, res) {
+            //         console.table(res);
+            //     });
+            // })
         }
         )
 };
