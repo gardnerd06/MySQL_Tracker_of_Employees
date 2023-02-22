@@ -6,4 +6,5 @@ const cTable = require('console.table');
 
 
 
-getQuest();
+
+getQuest.getQuest();

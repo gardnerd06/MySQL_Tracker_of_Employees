@@ -1,26 +1,40 @@
 const inquirer = require('inquirer');
+const mysql = require('mysql2');
+
+const db = mysql.createConnection(
+    {
+        host: 'localhost',
+        user: 'root',
+        password: 'Motivation1',
+        database: 'business_db'
+    },
+
+);
 
 
 function add() {
     const addStuff = [{
-        type: "list",
-        name: "add",
-        message: 'What would you like to update?',
-        choices: ['Department',
-            'Roles',
-            'Employees',
-        ],
+        type: "number",
+        name: "select",
+        message: 'Which Employee would you like to update?',
+
     },
     {
-        type: "input",
-        name: "thing",
-        message: 'What info to update?',
+        type: "number",
+        name: "newRole",
+        message: 'What is their new role?',
 
     },
     ];
 
 
-    inquirer.prompt(addStuff).then((responses => console.log(`${responses.add} + ${responses.thing}`)));
+    inquirer.prompt(addStuff).then((responses => {
+        const upsql = `UPDATE employees SET role_id = "${responses.newRole}" WHERE e_id = ${responses.select}`;
+        db.query(upsql, function (err, results) { });
+        db.query('SELECT * FROM employees', function (err, results) {
+            console.table(results);
+        });
+    }))
 };
 
 

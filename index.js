@@ -48,7 +48,9 @@ function getQuest() {
                         });
                         return;
                     case 'View all employees':
-                        db.query('SELECT * FROM employees', function (err, results) {
+                        db.query(`SELECT employees.role_id, employees.first_name, employees.last_name, roles.title, roles.salary
+                        FROM employees
+                        INNER JOIN roles ON employees.manager_id=employees.e_id`, function (err, results) {
                             console.table(results);
                             getQuest();
                         });
@@ -75,6 +77,7 @@ function getQuest() {
     ]
     inquirer.prompt(questions)
         .then((answers) => {
+
             // let name = answers.Info;
             // let table = answers.addInfo;
 
@@ -92,5 +95,5 @@ function getQuest() {
 
 
 
-module.exports = getQuest;
+module.exports = { getQuest, db };
 

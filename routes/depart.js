@@ -1,4 +1,16 @@
 const inquirer = require('inquirer');
+const mysql = require('mysql2');
+
+const db = mysql.createConnection(
+    {
+        host: 'localhost',
+        user: 'root',
+        password: 'Motivation1',
+        database: 'business_db'
+    },
+
+);
+
 
 function adddept() {
     const dept = [{
@@ -11,7 +23,11 @@ function adddept() {
 
     }];
     inquirer.prompt(dept).then((responses => {
-        console.info(responses.name);
+        const depsql = `INSERT INTO departments (name) VALUES ('${responses.name}')`;
+        db.query(depsql, function (err, results) { });
+        db.query('SELECT * FROM departments', function (err, results) {
+            console.table(results);
+        });
     }))
 
 };
