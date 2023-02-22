@@ -78,17 +78,6 @@ function getQuest() {
     inquirer.prompt(questions)
         .then((answers) => {
 
-            // let name = answers.Info;
-            // let table = answers.addInfo;
-
-            // const answer = `INSERT INTO ${table} (name) Values ('${name}')`;
-            // db.query(answer, function (err, result) {
-            //     if (err) throw err;
-
-            //     db.query(`SELECT * FROM ${table}`, function (err, res) {
-            //         console.table(res);
-            //     });
-            // })
         }
         )
 };

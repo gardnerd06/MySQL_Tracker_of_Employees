@@ -17,17 +17,17 @@ VALUES ('Accountant', 70000,3),
        ('Mechanic', 80000,1);
 
 INSERT INTO employees (first_name, last_name, role_id, manager_id)
-VALUES ('Derrick', 'Long',1,1),
-('Derrick', 'Oneale',1,1),
-('Denzel', 'Kemp',2,1),
-('Denise', 'Slip',2,1),
-('Doloris', 'Lewis',3,1),
-('Dexter', 'Mfongu',3,1),
-('Drake', 'Nance',4,1),
-('Dion', 'Gardner',4,1),
-('Donna', 'Lawrence',5,1),
-('Delanie', 'Lock',5,1),
-('Deanna', 'Smith',5,1);
+VALUES ('Danile', 'Oneale',2,11),
+       ('Dexter', 'Mfongu',8,5),
+       ('Drake', 'Nance',4,),
+       ('Dion', 'Gardner',8,5),
+       ('Donna', 'Lawrence',5,),
+       ('Delanie', 'Lock',6,9),
+       ('Deanna', 'Smith',7,),
+       ('Denzel', 'Kemp',2,11),
+       ('Denise', 'Slip',2,11),
+       ('Derrick', 'Long',1,),
+       ('Doloris', 'Lewis',3,);
 
 
 show databases;
