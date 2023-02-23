@@ -16,7 +16,7 @@ function addRoles() {
     const addR = [{
         type: "input",
         name: "name",
-        message: 'What the name of this employee?',
+        message: 'What the name of the new role?',
 
     },
     {
