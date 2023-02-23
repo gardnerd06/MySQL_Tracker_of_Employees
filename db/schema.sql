@@ -19,7 +19,7 @@ CREATE TABLE roles (
 );
 
 CREATE TABLE employees (
-  e_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  e_id INT  AUTO_INCREMENT  PRIMARY KEY,
   first_name VARCHAR(30),
   last_name VARCHAR(30),
   role_id INT NOT NULL,
@@ -27,8 +27,8 @@ CREATE TABLE employees (
   manager_id INT DEFAULT NULL,
   -- to hold reference to another employee that is the manager of the current employee (`null` if the employee has no manager)
   FOREIGN KEY (role_id)
-  REFERENCES roles(r_id),
-  FOREIGN KEY (manager_id)
-  REFERENCES employees(e_id)
+  REFERENCES roles(r_id)
+  -- FOREIGN KEY (manager_id)
+  -- REFERENCES employees(e_id)
   
 );

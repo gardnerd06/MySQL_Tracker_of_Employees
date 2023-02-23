@@ -1,4 +1,5 @@
 const inquirer = require('inquirer');
+const { default: Choices } = require('inquirer/lib/objects/choices');
 const mysql = require('mysql2');
 
 const db = mysql.createConnection(
@@ -14,9 +15,10 @@ const db = mysql.createConnection(
 
 function add() {
     const addStuff = [{
-        type: "number",
+        type: "list",
         name: "select",
         message: 'Which Employee would you like to update?',
+        choices: [db.query(`select first_name, last_name, role_id from employees`, function (err, results) { console.log(results) })]
 
     },
     {
@@ -39,3 +41,5 @@ function add() {
 
 
 module.exports = { add };
+
+// db.query(`select first_name, last_name, role_id from employees`, function (err, results) { });

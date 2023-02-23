@@ -25,7 +25,8 @@ function getQuest() {
         {
             type: "list",
             name: "todo",
-            message: 'What would you like to do?',
+            message: 'What would you like to do?'['use arrow keys'],
+            loop: true,
             choices: ['View all departments',
                 'View all roles',
                 'View all employees',
@@ -48,21 +49,19 @@ function getQuest() {
                         });
                         return;
                     case 'View all employees':
-                        db.query(`SELECT employees.role_id, employees.first_name, employees.last_name, roles.title, roles.salary
-                        FROM employees
-                        INNER JOIN roles ON employees.manager_id=employees.e_id`, function (err, results) {
+                        db.query(`SELECT departments.name, roles.title, roles.salary, employees.first_name, employees.last_name
+                        FROM departments
+                        INNER JOIN roles ON departments.dept_id=roles.department_id
+                        INNER JOIN employees ON roles.r_id=employees.role_id`, function (err, results) {
                             console.table(results);
                             getQuest();
                         });
                         return;
                     case 'Add a department':
                         this.async(addDept.adddept());
-
-
                         return;
                     case 'add a role':
                         this.async(addRole.addRoles());
-
                         return;
                     case 'add an employee':
                         this.async(addEmployee.addEmploy());
