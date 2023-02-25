@@ -8,7 +8,7 @@ The goal of this project is to manage a company's employee database, using Node.
 
 [Github]<https://github.com/gardnerd06/MySQL_Tracker_of_Employees>
 
-[]<>
+[APPVideo]<https://drive.google.com/file/d/1fKlA_a6PVjDG1JBqFxc9VuDy--sds6BE/view>
 
 ## Table of Content
 
