@@ -21,6 +21,9 @@ The goal of this project is to manage a company's employee database, using Node.
 Daniel Gardner
 
 ## Screenshots
+![Screenshot (29)](https://user-images.githubusercontent.com/115792714/221378740-eab91351-2569-4ffb-833b-f8af98774592.png)
+![Screenshot (30)](https://user-images.githubusercontent.com/115792714/221378743-3cbe628e-a3ea-4b22-aa29-f1cb6d56a248.png)
+![Screenshot (31)](https://user-images.githubusercontent.com/115792714/221378747-28612ee6-f738-4af3-b193-bdf16682192b.png)
 
 ## How to Contribute
 
